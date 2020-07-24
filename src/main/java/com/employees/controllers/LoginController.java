@@ -3,16 +3,15 @@ package com.employees.controllers;
 
 import com.employees.entities.ManagerEmployee;
 import com.employees.entities.User;
+import com.employees.formaters.RoleFormater;
 import com.employees.services.RoleService;
 import com.employees.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -26,6 +25,11 @@ public class LoginController {
     @Autowired
     private RoleService roleService;
 
+    @InitBinder
+    private void customizeBinding (WebDataBinder binder) {
+        binder.registerCustomEditor(String.class,"roles", new RoleFormater());
+    }
+
     @GetMapping({"/login"})
     public String add(ModelMap model, User user, HttpServletRequest request) {
         model.addAttribute("user", user);
@@ -37,7 +41,14 @@ public class LoginController {
             model.addAttribute("user", userService.getAllUser());
             return "login";
         }
-        return "redirect:/home";
+        User u = userService.findByEmailAndPassword(user.getEmail(),user.getPassword());
+        if(u != null){
+            return "redirect:/home";
+        }else {
+            model.addAttribute("msg","utilisateur introuvable !");
+            return "login";
+        }
+
     }
 
     @PostMapping({"/register"})
@@ -52,6 +63,7 @@ public class LoginController {
     }
     @GetMapping({"/register"})
     public String register(ModelMap model, User user, HttpServletRequest request) {
+        model.addAttribute("roles", roleService.getAllroles());
         model.addAttribute("user", user);
         return "register";
     }

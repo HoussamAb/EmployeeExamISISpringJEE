@@ -1,5 +1,6 @@
 package com.employees.config;
 
+import com.employees.formaters.RoleFormater;
 import com.employees.formaters.departementFormater;
 import com.employees.formaters.normalEmployeeFormater;
 import com.employees.formaters.remunerationFormater;
@@ -54,5 +55,6 @@ public void addFormatters(FormatterRegistry registry) {
     registry.addConverter(new departementFormater());
     registry.addConverter(new remunerationFormater());
     registry.addConverter(new normalEmployeeFormater());
+    registry.addConverter(new RoleFormater());
 }
 }

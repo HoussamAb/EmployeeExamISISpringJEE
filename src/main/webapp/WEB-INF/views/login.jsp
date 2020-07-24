@@ -37,6 +37,7 @@
             <input class="btn btn-default" type="submit" value="Submit"/>
         </form:form>
     </header>
+    <span style="color: red;">${msg}</span>
     <a class="btn-default btn" href="${pageContext.request.contextPath}/auth/register">register</a>
 </div>
 </html>
