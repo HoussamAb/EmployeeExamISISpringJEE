@@ -31,10 +31,12 @@ public class NormalEmployee extends Employee {
     }
 
     @Override
-    public void setSousAdjacents(List<NormalEmployee> normalEmployeeList) {
+    public void setSousAdjacents(List<NormalEmployee> normalEmployeeList) {}
 
+    @Override
+    public void setManager(ManagerEmployee manager) {
+        this.setManager(this.managerEmployee);
     }
-
 
     @Override
     public List<NormalEmployee> getNormalEmployees() {

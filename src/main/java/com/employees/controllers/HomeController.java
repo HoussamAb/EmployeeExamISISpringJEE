@@ -1,6 +1,8 @@
 package com.employees.controllers;
 
 import com.employees.entities.Employee;
+import com.employees.entities.ManagerEmployee;
+import com.employees.entities.NormalEmployee;
 import com.employees.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,13 @@ public class HomeController {
     public ModelAndView home(@PathVariable(name="id",required = false) Optional<Integer> id, ModelMap model)
     {
         List<Employee> employees = employeeService.getAllEmployee();
+        List<NormalEmployee> normalEmployeeList = null;
+        List<ManagerEmployee> managerEmployees = null;
+
         ModelAndView map = new ModelAndView("home");
         map.addObject("data", employees);
+        map.addObject("normals", normalEmployeeList);
+        map.addObject("managers", managerEmployees);
         for(Employee a : employees){
             System.out.println(a.getId());
             System.out.println(a.getName());

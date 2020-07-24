@@ -18,14 +18,6 @@
  <header class="col-lg-12">
     <h1>Tous les employees</h1>
 
-        <div class="col-lg-12">
-            <a href="${pageContext.request.contextPath}/auth/login" class="btn btn-primary">
-                Login </a>
-            <a href="${pageContext.request.contextPath}/auth/register" class="btn btn-primary">
-                Sign Up </a>
-            <br/>
-        </div>
-
      <c:forEach items="${data}" var="item">
          <div style="border-style: solid;">
 

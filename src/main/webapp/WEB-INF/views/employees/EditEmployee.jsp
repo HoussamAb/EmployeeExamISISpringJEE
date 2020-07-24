@@ -66,7 +66,7 @@
                     <th scope="col">#</th>
                     <th scope="col">nom</th>
                     <th scope="col">departement</th>
-                    <th scope="col">grade</th>
+                    <th scope="col"><c:if test="${employees.remuneration.type.equals('fixe')}">grade</c:if><c:if test="${employees.remuneration.type.equals('variable')}">score</c:if></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -74,7 +74,7 @@
                     <th scope="row">${employees.managerEmployee.id}</th>
                     <td>${employees.managerEmployee.name}</td>
                     <td>${employees.managerEmployee.departement.name}</td>
-                    <td>${employees.managerEmployee.grade}</td>
+                    <td><c:if test="${employees.remuneration.type.equals('fixe')}">${employees.managerEmployee.grade}</c:if><c:if test="${employees.remuneration.type.equals('variable')}">${employees.managerEmployee.score}</c:if></td>
                 </tr>
                 </tbody>
             </table>

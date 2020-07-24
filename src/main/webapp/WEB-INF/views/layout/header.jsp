@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: binizmohamed
-  Date: 4/7/20
-  Time: 20:07
-  To change this template use File | Settings | File Templates.
---%>
 
       <!-- Static navbar -->
    <header>

@@ -16,8 +16,8 @@ public class ManagerEmployee extends Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<NormalEmployee> normalEmployees;
 
     public ManagerEmployee(long id,String name,String address, String phone,int grade, int score, Departement departement,Remuneration remuneration,List<NormalEmployee> normalEmployeeList){
         super(id,name,address,phone,grade,score,departement,remuneration);
@@ -26,6 +26,11 @@ public class ManagerEmployee extends Employee {
 
     @Override
     public void setSousAdjacents(List<NormalEmployee> normalEmployeeList) {
+        this.setSousAdjacents(this.normalEmployees);
+    }
+
+    @Override
+    public void setManager(ManagerEmployee manager) {
 
     }
 

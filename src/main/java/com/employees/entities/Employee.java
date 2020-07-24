@@ -1,6 +1,11 @@
 package com.employees.entities;
+import com.employees.annotaion.Phone;
 import lombok.*;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
@@ -18,15 +23,15 @@ public abstract class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
+    @Size(min=3, message = "minimum 3 lettre")
     String name;
-
+    @Type(type="text")
     String address;
-
+    @Phone
     String phone;
-
+    @NotNull
     int grade;
-
+    @NotNull
     int score;
 
 
@@ -69,6 +74,8 @@ public abstract class Employee {
     }
 
     public abstract void setSousAdjacents(List<NormalEmployee> normalEmployeeList);
+
+    public abstract void setManager(ManagerEmployee manager);
 
     public NormalEmployee  managerToNormal(ManagerEmployee managerEmployee){
         NormalEmployee normalEmployee = new NormalEmployee();
