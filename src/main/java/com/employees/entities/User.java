@@ -20,7 +20,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @UniqueUser
+    // @UniqueUser
     String email;
     @NotNull
     @Size(min = 2, max = 30)

@@ -47,7 +47,8 @@ public class LoginController {
             model.addAttribute("roles", roleService.getAllroles());
             return "register";
         }
-        return "redirect:/login";
+        userService.save(user);
+        return "redirect:/auth/login";
     }
     @GetMapping({"/register"})
     public String register(ModelMap model, User user, HttpServletRequest request) {

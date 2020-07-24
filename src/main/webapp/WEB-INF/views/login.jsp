@@ -23,7 +23,7 @@
     <jsp:directive.include file="layout/header.jsp" />
     <header class="col-lg-4">
         <h1>Connexion</h1>
-        <form:form method="post" action="${pageContext.request.contextPath}/auth/sendlogin" modelAttribute="user">
+        <form:form method="post" action="${pageContext.request.contextPath}/auth/login" modelAttribute="user">
             <div class="form-group">
                 <label for="email">Username</label>
                 <form:input path="email" cssClass="form-control"  placeholder="email" />
